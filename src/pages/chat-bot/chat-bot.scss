@@ -1,0 +1,30 @@
+page-chat-bot {
+  ion-footer{
+    position: fixed;
+    background: white;
+  }
+  ion-input{
+    border: 2px solid black;
+    width: 70%;
+    display: inline-block
+  }
+  button{
+    display: inline
+  }
+
+  .user{
+    margin-right: 50%;
+    color: white;
+    background-color: #7D0B88;
+    border-radius: 15px 15px 15px 0px;
+    padding: 4% 4% 4% 4%;
+  }
+  .bot{
+    margin-left: 20%;
+    color: white;
+    background-color: #AC1FBE;
+    border-radius: 15px 15px 0px 15px;
+    padding: 4% 4% 4% 4%;
+
+  }
+}

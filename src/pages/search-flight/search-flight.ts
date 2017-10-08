@@ -136,9 +136,8 @@ export class SearchFlightPage implements OnInit{
     var mydate = myDateDiv[0] + "/" + myDateDiv[1] + "/" + myDateDiv[2];
     // console.log(mydate);
     this.flightData.searchFlight(flightcode,flightnumber,mydate).subscribe(res => {
-      console.log(res.body);
-      if(res.body != null){
-        if((res.body.error != undefined) || res.body.flightStatuses.length == 0 ){ 
+      console.log(res);
+      if(res== null){
         let toast = this.toastCtrl.create({
           message: "Incorrect flight code or number",
           duration: 3000,
@@ -146,17 +145,8 @@ export class SearchFlightPage implements OnInit{
         });
         toast.present();
       }else {
-        this.navCtrl.push(FlightDetailsPage,{res:res.body});
+        this.navCtrl.push(FlightDetailsPage,{res});
       }
-      }else{
-        let toast = this.toastCtrl.create({
-          message: "Incorrect flight code or number",
-          duration: 3000,
-          position: 'bottom'
-        });
-        toast.present();
-      }
-      
     },
       err => {
         console.log(err);
@@ -166,8 +156,8 @@ export class SearchFlightPage implements OnInit{
           position: 'bottom'
         });
         toast.present();
-      }),
-      () => console.log('Completed')
+      })
+
   }
 
 }

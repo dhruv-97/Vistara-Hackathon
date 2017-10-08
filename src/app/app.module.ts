@@ -10,6 +10,8 @@ import {CabHistoryPage} from '../pages/cab-history/cab-history';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ContactUsPage} from '../pages/contact-us/contact-us';
+import {ChatBotPage} from '../pages/chat-bot/chat-bot';
+import {BookingPage} from '../pages/booking/booking';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {ContactUsPage} from '../pages/contact-us/contact-us';
     CabHistoryPage,
     LoginPage,
     SignupPage,
-    ContactUsPage
+    ContactUsPage,
+    ChatBotPage,
+    BookingPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +42,9 @@ import {ContactUsPage} from '../pages/contact-us/contact-us';
     CabHistoryPage,
     LoginPage,
     SignupPage,
-    ContactUsPage
+    ContactUsPage,
+    ChatBotPage,
+    BookingPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

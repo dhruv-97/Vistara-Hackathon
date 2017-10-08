@@ -25,36 +25,28 @@ export class FlightData {
     let data = JSON.stringify({
       "flight_code": flightcode,
       "flight_number": flightnumber,
-      "date": mydate
     });
 
     // console.log(data);
 
     return this.http.post(`http://localhost:3000/details/flight`, data, { headers })
       .map(res => res.json())
-      .map((res) => {
-        return res;
-      });
   }
 
-  addFlight(ob):Observable<any>{
+  addFlight(id):Observable<any>{
     let headers = new Headers();
     let token=localStorage.getItem('auth-token');
     headers.append('Content-Type', 'application/json');
     // console.log(token);
     headers.append('auth-token',token);
-
-    let data = JSON.stringify({
-      "flight": ob
-    });
-
-    console.log(data);
-
-    return this.http.post(`http://localhost:3000/details/addflight`, data, { headers })
+    let username = localStorage.getItem('username');
+    let data = {
+      _id: id,
+      username
+      
+    }
+    return this.http.put(`http://localhost:3000/details/flight`, data, { headers })
       .map(res => res.json())
-      .map((res) => {
-        return res;
-      });
     }
     
 
@@ -63,12 +55,9 @@ export class FlightData {
     let token=localStorage.getItem('auth-token');
     headers.append('Content-Type', 'application/json');
     headers.append('auth-token',token);
-
-    return this.http.get(`http://localhost:3000/details/flighthistory`, { headers })
+    let username = localStorage.getItem('username');
+    return this.http.post(`http://localhost:3000/details/flight`,{username}, { headers })
       .map(res => res.json())
-      .map((res) => {
-        return res;
-      });
     }
 
     weather(airport_code):Observable<any>{

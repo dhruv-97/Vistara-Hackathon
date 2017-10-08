@@ -22228,6 +22228,37 @@ page-cab ion-icon {
   padding: 20px;
 }
 
+page-chat-bot ion-footer {
+  position: fixed;
+  background: white;
+}
+
+page-chat-bot ion-input {
+  border: 2px solid black;
+  width: 70%;
+  display: inline-block;
+}
+
+page-chat-bot button {
+  display: inline;
+}
+
+page-chat-bot .user {
+  margin-right: 50%;
+  color: white;
+  background-color: #7D0B88;
+  border-radius: 15px 15px 15px 0px;
+  padding: 4% 4% 4% 4%;
+}
+
+page-chat-bot .bot {
+  margin-left: 20%;
+  color: white;
+  background-color: #785D7E;
+  border-radius: 15px 15px 0px 15px;
+  padding: 4% 4% 4% 4%;
+}
+
 .background-color {
   background-color: #303F9F;
   font-family: "Open Sans", Helvetica;
@@ -22586,6 +22617,29 @@ page-flight-history .background-color-three {
   background-color: #fff;
 }
 
+page-flight-history .buttoncenter {
+  text-align: center;
+}
+
+page-flight-history .button-new {
+  background-color: #fff;
+  border: 2px solid white;
+  border-radius: 27px;
+  color: #2d4262;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: all 200ms;
+}
+
+page-flight-history .button {
+  background: #fff;
+  color: #2d4262;
+}
+
 page-flight-history hr {
   display: block;
   height: 1px;
@@ -22920,6 +22974,79 @@ page-flight-history .rain:after {
 
 page-flight-history-details ion-icon {
   font-size: 25px;
+}
+
+page-flight-history-details hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 5px solid #fff;
+}
+
+page-flight-history-details .page-color {
+  background-color: #D3D4D9;
+}
+
+page-flight-history-details .background-color-one {
+  background-color: #4667A8;
+}
+
+page-flight-history-details .text-color {
+  color: #fff;
+}
+
+page-flight-history-details .iconcenter {
+  text-align: center;
+}
+
+page-flight-history-details .icon {
+  color: #fff !important;
+}
+
+page-home .login {
+  border-top: 8px solid #66ccff;
+}
+
+page-home .logo {
+  width: 20%;
+  float: left;
+  margin: 16px;
+}
+
+page-home .error {
+  background-color: #66ccff;
+  color: #fff;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+}
+
+page-home .error-label {
+  bottom: 0;
+  color: red;
+  display: none;
+  top: auto;
+}
+
+.input--error page-home .error-label {
+  display: block;
+}
+
+page-home .sub {
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+page-home input:valid ~ .error-label {
+  display: none;
+}
+
+page-home input:valid + label {
+  color: green !important;
+}
+
+page-home .input--error {
+  padding-bottom: 15px;
 }
 
 page-login .page-color {

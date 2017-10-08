@@ -27,6 +27,7 @@ export class FlightDetailsPage implements OnInit{
   duration: string;
   arrivalTerminal: string;
   departureTerminal: string;
+  id: string;
 
 
 
@@ -34,14 +35,16 @@ export class FlightDetailsPage implements OnInit{
     private auth: AuthData, private flightData: FlightData, public toastCtrl: ToastController) {
     // console.log(navParams.get("res"));
     let ob = navParams.get("res");
-    this.departureDate = ob.flightStatuses[0].departureDate.dateLocal.substr(0, 10);
-    this.arrivalDate = ob.flightStatuses[0].arrivalDate.dateLocal.substr(0, 10);
-    this.flightName = ob.appendix.airlines[0].name;
-    this.departue = ob.flightStatuses[0].departureAirportFsCode;
-    this.arrival = ob.flightStatuses[0].arrivalAirportFsCode;
-    this.duration = ob.flightStatuses[0].flightDurations.scheduledBlockMinutes;
-    this.arrivalTerminal = ob.flightStatuses[0].airportResources.arrivalTerminal;
-    this.departureTerminal = ob.flightStatuses[0].airportResources.departureTerminal;
+    console.log(ob);
+    this.id = ob._id;
+    this.departureDate = ob.departure_date;
+    this.arrivalDate = ob.arrival_date;
+    this.flightName = ob.flight_name;
+    this.departue = ob.departure;
+    this.arrival = ob.arrival;
+    this.duration = ob.flight_duration;
+    this.arrivalTerminal = ob.arrival_terminal;
+    this.departureTerminal = ob.departure_terminal;
   }
 
      ngOnInit() {
@@ -66,28 +69,8 @@ export class FlightDetailsPage implements OnInit{
       }
 
   add() {
-    if (this.auth.isLoggedIn) {
-      // console.log(this.navParams.get("res"));
-      this.flightData.addFlight(this.navParams.get("res")).subscribe(res => {
-        console.log(res);
-        if (res.success == false) {
-          let toast = this.toastCtrl.create({
-            message: "Not able to add your flight.",
-            duration: 3000,
-            position: 'bottom'
-          });
-          toast.present();
-        }
-        else {
-          let toast = this.toastCtrl.create({
-            message: "Your flight added successfully",
-            duration: 3000,
-            position: 'bottom'
-          });
-          toast.present();
-          //push to history
+      this.flightData.addFlight(this.id).subscribe(res => {
           this.navCtrl.push(FlightHistoryPage);
-        }
       },
         err => {
           console.log(err);
@@ -99,17 +82,6 @@ export class FlightDetailsPage implements OnInit{
           toast.present();
         }),
         () => console.log('Completed')
-    }
-    else {
-      let toast = this.toastCtrl.create({
-        message: 'Please login to add your flights',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
-      //push to login
-      this.navCtrl.push(LoginPage);
-    }
   }
 
 }

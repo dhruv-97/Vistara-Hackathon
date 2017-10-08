@@ -29,7 +29,7 @@ export class AuthData {
       "username": username,
       "password": password
     });
-
+    localStorage.setItem('username',username);
     console.log(data);
 
     return this.http.post(`http://localhost:3000/login`, data, { headers })

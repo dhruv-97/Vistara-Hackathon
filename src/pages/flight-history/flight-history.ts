@@ -39,34 +39,17 @@ export class FlightHistoryPage  {
   }
 
   flightHistory() {
-    if (this.auth.isLoggedIn) {
-      // console.log(this.navParams.get("res"));
       this.flightData.flightHistory().subscribe(res => {
-        // console.log(res);
-        if (res.status == false) {
-          let toast = this.toastCtrl.create({
-            message: "No flights added!",
-            duration: 3000,
-            position: 'bottom'
-          });
-          toast.present();
-          this.divShow = false;
-        }
-        else {
-          // console.log(res);
-          let ob = res.data.flight.flight;
-          this.departureDate = ob.flightStatuses[0].departureDate.dateLocal.substr(0, 10);
-          this.arrivalDate = ob.flightStatuses[0].arrivalDate.dateLocal.substr(0, 10);
-          this.flightName = ob.appendix.airlines[0].name;
-          this.departue = ob.flightStatuses[0].departureAirportFsCode;
-          this.arrival = ob.flightStatuses[0].arrivalAirportFsCode;
-          this.duration = ob.flightStatuses[0].flightDurations.scheduledBlockMinutes;
-          this.arrivalTerminal = ob.flightStatuses[0].airportResources.arrivalTerminal;
-          this.departureTerminal = ob.flightStatuses[0].airportResources.departureTerminal;
-          this.getDepWeather(ob.flightStatuses[0].departureAirportFsCode);
-          this.getAriWeather(ob.flightStatuses[0].arrivalAirportFsCode);
+          let ob = res;
+          this.departureDate = ob.departure_date;
+          this.arrivalDate = ob.arrival_date;
+          this.flightName = ob.flight_name;
+          this.departue = ob.departure;
+          this.arrival = ob.arrival;
+          this.duration = ob.flight_duration;
+          this.arrivalTerminal = ob.arrival_terminal;
+          this.departureTerminal = ob.departure_terminal;
           this.divShow = true;
-        }
       },
         err => {
           console.log(err);
@@ -76,18 +59,7 @@ export class FlightHistoryPage  {
             position: 'bottom'
           });
           toast.present();
-        }),
-        () => console.log('Completed')
-    } else {
-      let toast = this.toastCtrl.create({
-        message: 'Please login to see your flight history!',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
-      //push to login
-      this.navCtrl.push(LoginPage);
-    }
+        })
 
   }
 

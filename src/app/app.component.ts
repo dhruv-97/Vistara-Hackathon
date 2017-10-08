@@ -10,6 +10,8 @@ import {CabHistoryPage} from '../pages/cab-history/cab-history';
 import {LoginPage} from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup';
 import {ContactUsPage} from '../pages/contact-us/contact-us';
+import {ChatBotPage} from '../pages/chat-bot/chat-bot';
+import {BookingPage} from '../pages/booking/booking';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,11 +19,8 @@ import {ContactUsPage} from '../pages/contact-us/contact-us';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-<<<<<<< HEAD
-  rootPage: any = LoginPage;
-=======
+  //rootPage: any = LoginPage;
   rootPage: any = SearchFlightPage;
->>>>>>> uddish
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,6 +34,8 @@ export class MyApp {
       // {title: 'CabPage',component:CabPage},
       {title: 'Login',component:LoginPage},
       {title: 'Signup',component:SignupPage},
+      {title: 'VistaBot', component:ChatBotPage},
+      {title: 'Book a Seat', component: BookingPage}
       // {title: 'Contact Us', component:ContactUsPage}
     ];
 
