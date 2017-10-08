@@ -21,7 +21,6 @@ It includes a list of features:
 
 ## Backend Of Flight Viewer
 
-https://github.com/mayankagg9722/Flight-Assistant
 
 
 ![pageres](screenshots/cover.png "Main")
